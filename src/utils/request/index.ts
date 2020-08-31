@@ -1,4 +1,4 @@
-import systemConfig from '../../config'
+import systemConfig from '/@/config'
 import { getLocalStorage } from '../storage'
 import axios, { AxiosRequestConfig } from 'axios'
 import {
@@ -9,7 +9,6 @@ import {
 } from './errorHandle'
 
 type requestOptions = AxiosRequestConfig & {
-  url: string
   noLoading?: boolean
   body?: any
   headers?: any
@@ -49,9 +48,7 @@ axios.interceptors.response.use(
     return Promise.reject(networkErrorMsg)
   },
 )
-export default async function request(options: requestOptions) {
-  const { url } = options
-  delete options.url
+export default async function request(url: string, options: requestOptions) {
   const hasApi = url.indexOf('api') === -1
   const Authorization = getLocalStorage(authKey)
   let headers = {}

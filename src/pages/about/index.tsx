@@ -1,9 +1,9 @@
 import React from 'react'
-// import styles from './style.module.scss'
+import styles from './style.module.scss'
 
 const AboutPage = () => {
   return (
-    <p>this is about page</p>
+    <p className={styles.aboutPage}>this is about page</p>
   )
 }
 
